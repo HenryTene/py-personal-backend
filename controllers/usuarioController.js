@@ -39,6 +39,20 @@ const autenticar = async (req, res) => {
   }
 
   //Comprobar si el password es correcto
+
+  if (await usuario.comprobarPassword(password)) {
+    console.log("El password es correcto");
+
+    res.json({ 
+      _id:usuario._id,
+      nombre:usuario.nombre,
+      email:usuario.email,
+     });
+  } else {
+    console.log("El password es incorrecto");
+    const error = new Error("El password es incorrecto!!!");
+    return res.status(400).json({ msg: error.message });
+  }
 };
 
 export { registrar, autenticar };
