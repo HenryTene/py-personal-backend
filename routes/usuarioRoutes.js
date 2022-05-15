@@ -19,6 +19,7 @@ router.get("/confirmar/:token", confirmar); //Confirma un usuario
 router.post("/olvide-password", olvidePassword);
 /* router.get("/olvide-password/:token", comprobarToken);
 router.post("/olvide-password/:token", nuevoPassword); */
+
 router.route("/olvide-password/:token").get(comprobarToken).post(nuevoPassword); //reemplaza a rutas iguales en el mismo path
 
 router.get("/perfil", checkAuth, perfil);
