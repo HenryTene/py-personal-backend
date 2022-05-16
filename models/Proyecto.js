@@ -39,5 +39,4 @@ const proyectoSchema = mongoose.Schema(
 );
 
 const Proyecto = mongoose.model("Proyecto", proyectoSchema);
-
 export default Proyecto;
