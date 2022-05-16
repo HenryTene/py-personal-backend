@@ -37,6 +37,5 @@ const proyectoSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-
 const Proyecto = mongoose.model("Proyecto", proyectoSchema);
 export default Proyecto;
