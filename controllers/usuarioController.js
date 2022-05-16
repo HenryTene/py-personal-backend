@@ -18,7 +18,6 @@ const registrar = async (req, res) => {
     const usuarioAlmacenado = await usuario.save();
     res.json(usuarioAlmacenado);
   } catch (error) {
-    Q;
     console.log(error);
   }
 };

@@ -23,8 +23,8 @@ router
   .put(checkAuth, editarProyecto)
   .delete(checkAuth, eliminarProyecto);
 
-  router.get("/:id/tareas", checkAuth, obtenerTareas);
-  router.post("/agregar-colaborador/:id", checkAuth, agregarColaborador);
-  router.post("/eliminar-colaborador/:id", checkAuth, eliminarColaborador);
+router.get("/:id/tareas", checkAuth, obtenerTareas);
+router.post("/agregar-colaborador/:id", checkAuth, agregarColaborador);
+router.post("/eliminar-colaborador/:id", checkAuth, eliminarColaborador);
 
 export default router;
