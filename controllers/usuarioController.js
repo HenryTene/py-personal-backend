@@ -136,7 +136,6 @@ export {
   olvidePassword,
   comprobarToken,
   nuevoPassword,
- develop,
   perfil,
 
 };
