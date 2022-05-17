@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const tareaShema = mongoose.Schema(
+const tareaSchema = mongoose.Schema(
   {
     nombre: {
       type: String,
@@ -23,8 +23,8 @@ const tareaShema = mongoose.Schema(
     },
     prioridad: {
       type: String,
-      required: true,
-      enum: ["Alta", "Media", "Baja"],
+      required: false,
+      enum: ['Baja', 'Media', 'Alta'],
     },
     proyecto: {
       type: mongoose.Schema.Types.ObjectId,
@@ -36,5 +36,5 @@ const tareaShema = mongoose.Schema(
   }
 );
 
-const Tarea = mongoose.model("Tarea", tareaShema);
+const Tarea = mongoose.model("Tarea", tareaSchema);
 export default Tarea;
