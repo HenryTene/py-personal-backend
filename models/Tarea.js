@@ -24,7 +24,7 @@ const tareaSchema = mongoose.Schema(
     prioridad: {
       type: String,
       required: false,
-      enum: ['Baja', 'Media', 'Alta'],
+      enum: ["Baja", "Media", "Alta"],
     },
     proyecto: {
       type: mongoose.Schema.Types.ObjectId,
