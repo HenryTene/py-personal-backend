@@ -10,7 +10,7 @@ const proyectoSchema = mongoose.Schema(
     descripcion: {
       type: String,
       trim: true,
-      required: true,
+      required: false,
     },
     fechaEntrega: {
       type: Date,
