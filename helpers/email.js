@@ -1,5 +1,22 @@
 import nodemailer from "nodemailer";
 
-export const emailRegistro = (datos) => {
-  console.log(datos);
+export const emailRegistro = async (datos) => {
+  const { nombre, email, token } = datos;
+  const transport = nodemailer.createTransport({
+    host: "smtp.mailtrap.io",
+    port: 2525,
+    auth: {
+      user: "53c43f81388eba",
+      pass: "47c28c43a11977",
+    },
+  });
+  //Informacion del email
+  const info = await transport.sendMail({
+    from: '"Simple Project-Adminstardor de Proyectos" <cuenta@simpleproject.com>',
+    to: email,
+    subject: "Simple Project - Confirmacion de cuenta",
+    text: "Confirma tu cuenta en simple Project",
+    html: `<p>Hola ${nombre}, para confirmar tu cuenta en Simple Project,</p> 
+    <p> haz click en el siguiente enlace:<a href="${process.env.FRONTEND_URL}/confirmar/${token}">Comprobar cuenta</a> </p><p>Si no creaste esta cuenta puedes ignorar este mensaje</p>`,
+  });
 };
