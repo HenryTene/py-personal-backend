@@ -11,19 +11,20 @@ app.use(express.json());
 dotenv.config();
 conectarDB();
 //configurar CORS
-const whiteList = ["http://localhost:3000"];
+
+const whiteList = [process.env.FRONTEND_URL];
 const corsOptions = {
-    origin: function(origin, callback) {
-        if (whiteList.includes(origin)) {
-            //Puede consultar API
-            callback(null, true);
-            
-        } else {
-            //No puede consultar API
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    optionsSuccessStatus: 200,
+  origin: function (origin, callback) {
+    if (whiteList.includes(origin)) {
+      //Puede consultar API
+      callback(null, true);
+    } else {
+      //No puede consultar API
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200,
+
 };
 
 app.use(cors(corsOptions));
