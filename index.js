@@ -20,7 +20,7 @@ const corsOptions = {
       callback(null, true);
     } else {
       //No puede consultar API
-      callback(new Error("Not allowed by CORS"));
+      callback(new Error("error de cors"));
     }
   },
   optionsSuccessStatus: 200,
