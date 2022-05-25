@@ -79,7 +79,11 @@ const eliminarTarea = async (req, res) => {
     console.log(error);
   }
 };
-const cambiarEstado = async (req, res) => {};
+const cambiarEstado = async (req, res) => {
+
+  console.log(req.params.id);
+
+};
 
 export {
   agregarTarea,
