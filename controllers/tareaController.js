@@ -73,7 +73,13 @@ const eliminarTarea = async (req, res) => {
   }
 
   try {
+    const proyecto = await Proyecto.findById(tarea.proyecto);
+    proyecto.tareas.pull(tarea._id);
+    await proyecto.save();
     await tarea.deleteOne();
+
+    await Promise.allSettled([await proyecto.save(), await tarea.deleteOne()]);
+
     res.json({ message: "La Tarea se eliminó" });
   } catch (error) {
     console.log(error);
@@ -96,10 +102,9 @@ const cambiarEstado = async (req, res) => {
     const error = new Error("Acción no válida");
     return res.status(403).json({ error: error.message });
   }
-  tarea.estado=!tarea.estado;
+  tarea.estado = !tarea.estado;
   await tarea.save();
   res.json(tarea);
-  
 };
 
 export {
