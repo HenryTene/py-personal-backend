@@ -50,7 +50,7 @@ const io = new Server(servidor, {
 });
 
 io.on("connection", (socket) => {
-  console.log("Conectado a socket.io");
+  //console.log("Conectado a socket.io");
   //Definir los eventos de socket io
 
   socket.on("abrir proyecto", (proyecto) => {
