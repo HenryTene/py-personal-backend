@@ -12,6 +12,7 @@ dotenv.config();
 conectarDB();
 //configurar CORS
 
+
 /*
 const express = require("express")
 var app = express();
@@ -22,6 +23,7 @@ var io = require('socket.io')(server, {
     }
 });
  */
+
 
 const whitelist = [process.env.FRONTEND_URL];
 const corsOptions = {
@@ -34,7 +36,9 @@ const corsOptions = {
       callback(new Error("error de cors"));
     }
   }, */
+
   /* optionsSuccessStatus: 200, */
+
 };
 
 /* app.use(cors(corsOptions)); */
