@@ -34,7 +34,7 @@ const corsOptions = {
       callback(new Error("error de cors"));
     }
   }, */
-  optionsSuccessStatus: 200,
+  /* optionsSuccessStatus: 200, */
 };
 
 /* app.use(cors(corsOptions)); */
