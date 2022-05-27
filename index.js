@@ -25,7 +25,7 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
-app.use(cors(corsOptions));
+app.use(cors('*'));
 
 //Routing
 app.use("/api/usuarios", usuarioRoutes);
