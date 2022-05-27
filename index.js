@@ -12,6 +12,7 @@ dotenv.config();
 conectarDB();
 //configurar CORS
 
+
 /*
 const express = require("express")
 var app = express();
@@ -23,6 +24,7 @@ var io = require('socket.io')(server, {
 });
  */
 
+
 const whitelist = [process.env.FRONTEND_URL];
 const corsOptions = {
   origin:'https://py-personal-frontend.vercel.app/', 
@@ -30,6 +32,7 @@ const corsOptions = {
   optionSuccessStatus:200
 }
 /*
+
 
 */
 
