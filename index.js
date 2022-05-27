@@ -27,22 +27,17 @@ var io = require('socket.io')(server, {
 
 const whitelist = [process.env.FRONTEND_URL];
 const corsOptions = {
-  origin:'*',/*  function (origin, callback) {
-    if (whitelist.includes(origin)) {
-      //Puede consultar API
-      callback(null, true);
-    } else {
-      //No puede consultar API
-      callback(new Error("error de cors"));
-    }
-  }, */
+  origin:'https://py-personal-frontend.vercel.app/', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}
+/*
 
-  /* optionsSuccessStatus: 200, */
 
-};
+*/
 
-/* app.use(cors(corsOptions)); */
-app.use(cors());
+app.use(cors(corsOptions));
+/* app.use(cors()); */
 
 //Routing
 app.use("/api/usuarios", usuarioRoutes);
@@ -64,6 +59,11 @@ const io = new Server(servidor, {
     origin: "*",
   },
 });
+
+
+/*
+
+*/
 
 io.on("connection", (socket) => {
   //console.log("Conectado a socket.io");
