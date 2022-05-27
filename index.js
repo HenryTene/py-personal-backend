@@ -21,7 +21,7 @@ var io = require('socket.io')(server, {
       origin: '*',
     }
 });
-*/
+ */
 
 const whitelist = [process.env.FRONTEND_URL];
 const corsOptions = {
