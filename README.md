@@ -57,7 +57,7 @@ Para probar la aplicación debes ingresar a un cliente HTTP (por ejemplo POSTMAN
 Debido a la necesida de tener un servicio de email que pueda corroborar la identidad del usuario se han creado dos cuentas para que se pueda verficar la funcionalidad de la aplicacion:
 
 
-| Usuario 1 |admin@sp.com |clave:12345678|
+| Usuario 1 |admin@sp.com |clave:123456|
 | --- | --- |---|
 | Usuario 2 |user1@sp.com |clave:123456|
 
