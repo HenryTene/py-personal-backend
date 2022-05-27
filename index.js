@@ -12,9 +12,22 @@ dotenv.config();
 conectarDB();
 //configurar CORS
 
+
+/*
+const express = require("express")
+var app = express();
+var server = app.listen(4000);
+var io = require('socket.io')(server, {
+    cors: {
+      origin: '*',
+    }
+});
+ */
+
+
 const whitelist = [process.env.FRONTEND_URL];
 const corsOptions = {
-  origin: function (origin, callback) {
+  origin:'*',/*  function (origin, callback) {
     if (whitelist.includes(origin)) {
       //Puede consultar API
       callback(null, true);
@@ -22,7 +35,7 @@ const corsOptions = {
       //No puede consultar API
       callback(new Error("error de cors"));
     }
-  },
+  }, */
   optionsSuccessStatus: 200,
 
 };
