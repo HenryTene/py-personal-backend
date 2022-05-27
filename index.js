@@ -25,16 +25,29 @@ var io = require('socket.io')(server, {
 
 const whitelist = [process.env.FRONTEND_URL];
 const corsOptions = {
-  origin:'https://py-personal-frontend.vercel.app/', 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
+  origin: function (origin, callback) {
+    if (whitelist.includes(origin)) {
+      // Puede consultar la API
+      callback(null, true);
+    } else {
+      // No esta permitido
+      callback(new Error("Error de Cors"));
+    }
+  },
 }
 /*
 
 */
 
-app.use(cors(corsOptions));
-/* app.use(cors()); */
+//app.use(cors(corsOptions));
+app.use(function (req, res, next) {
+  //Enabling CORS
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type; Accept"); 
+    
+    next();
+  });
 
 //Routing
 app.use("/api/usuarios", usuarioRoutes);
