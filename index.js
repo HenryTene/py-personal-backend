@@ -36,21 +36,21 @@ const corsOptions = {
       callback(new Error("Error de Cors"));
     }
   },
-}
+};
 /*
 
 
 */
 
-//app.use(cors(corsOptions));
-app.use(function (req, res, next) {
+app.use(cors(corsOptions));
+/* app.use(function (req, res, next) {
   //Enabling CORS
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type; Accept"); 
-    
+
     next();
-  });
+  }); */
 
 //Routing
 app.use("/api/usuarios", usuarioRoutes);
@@ -68,15 +68,36 @@ import { Server } from "socket.io";
 const io = new Server(servidor, {
   pingTimeout: 60000,
   cors: {
-    /* origin: process.env.FRONTEND_URL, */
-    origin: "*",
+    origin: process.env.FRONTEND_URL,
+    handlePreflightRequest: (req, res) => {
+      res.writeHead(200, {
+        "Access-Control-Allow-Origin": process.env.FRONTEND_URL,
+        "Access-Control-Allow-Methods": "GET,POST",
+        "Access-Control-Allow-Headers": "my-custom-header",
+        "Access-Control-Allow-Credentials": true,
+      });
+      /* origin: "*", */
+      res.end();
+    },
   },
 });
 
 
-/*
+/* // server-side
+const io = require(“socket.io”)(httpServer, {
+  origins: [“https://example.com”],
+  handlePreflightRequest: (req, res) => {
+    res.writeHead(200, {
+      “Access-Control-Allow-Origin”: “https://example.com”,
+      “Access-Control-Allow-Methods”: “GET,POST”,
+      “Access-Control-Allow-Headers”: “my-custom-header”,
+      “Access-Control-Allow-Credentials”: true
+    });
+    res.end();
+  }
+});
+ */
 
-*/
 
 io.on("connection", (socket) => {
   //console.log("Conectado a socket.io");
